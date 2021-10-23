@@ -351,11 +351,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				ONLY_ACTIVE_ARCH = YES;
-				"OTHER_LDFLAGS[arch=*]" = (
-					"-lgmp",
-					"-lgmpxx",
-				);
+				OTHER_LDFLAGS = "-lgmp";
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
 				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
 			};
@@ -480,7 +479,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lgmp";
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
 				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
 			};
@@ -490,8 +492,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				ONLY_ACTIVE_ARCH = YES;
-				"OTHER_LDFLAGS[arch=*]" = "";
+				OTHER_LDFLAGS = "-lgmp";
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
 				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
 			};
@@ -534,7 +538,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lgmp";
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
 				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
 			};
