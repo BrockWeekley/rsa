@@ -1,0 +1,694 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		6B4D2D3D20814E899852B91D /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 451F383F68F64308A1A84A17 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				0E520923E5AB03797EE23991 /* Generate CMakeFiles/ALL_BUILD */,
+			);
+			dependencies = (
+				9F5DE14A99BC457A9626717D /* PBXTargetDependency */,
+				63BA38EC04254EC8A345EB13 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		F277D8A359324A0D94B81B52 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4876632E40234BC4A997EBD3 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				34E243C59E88A9FFF48BCED1 /* Generate CMakeFiles/ZERO_CHECK */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		C245D2F86AD74A23BB9266D8 /* /Users/brock/dev/projects/CryptoMidterm/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 451C131883DF4FE3A75CD826 /* /Users/brock/dev/projects/CryptoMidterm/CMakeLists.txt */; };
+		DDD8A658E468402B9F7F08FD /* /Users/brock/dev/projects/CryptoMidterm/rsa.cpp */ = {isa = PBXBuildFile; fileRef = CAEDE1F713494FD9A9B7A2AC /* /Users/brock/dev/projects/CryptoMidterm/rsa.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		53010AD3E3FF4584B858F273 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		6EB0BEC190EB4CE38D474B6C /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		BC0270B80D7B418BB150DE82 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		D3139F217BCA42B8A5D0BACC /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		655A941B44724784880F69B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A954A301B8B34120A3DEE6A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F277D8A359324A0D94B81B52;
+			remoteInfo = ZERO_CHECK;
+		};
+		66E701D331BA4210B4E62D52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A954A301B8B34120A3DEE6A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE055AFF31844C7292CD173D;
+			remoteInfo = rsa;
+		};
+		C7D05742CF4F45BFB54307E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A954A301B8B34120A3DEE6A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F277D8A359324A0D94B81B52;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1391A9349B6E41C1B7048991 /* rsa */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = rsa; sourceTree = BUILT_PRODUCTS_DIR; };
+		451C131883DF4FE3A75CD826 /* /Users/brock/dev/projects/CryptoMidterm/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		86D516A51C1544709C9199E7 /* /Users/brock/dev/projects/CryptoMidterm/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		CAEDE1F713494FD9A9B7A2AC /* /Users/brock/dev/projects/CryptoMidterm/rsa.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = rsa.cpp; path = rsa.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		99EAFB2F29DE476686580D73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24AFD0C3C9F1482BADFF4510 /* rsa */ = {
+			isa = PBXGroup;
+			children = (
+				6E337D3BC8424FC298AB5534 /* Source Files */,
+				451C131883DF4FE3A75CD826 /* /Users/brock/dev/projects/CryptoMidterm/CMakeLists.txt */,
+			);
+			name = rsa;
+			sourceTree = "<group>";
+		};
+		6E337D3BC8424FC298AB5534 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAEDE1F713494FD9A9B7A2AC /* /Users/brock/dev/projects/CryptoMidterm/rsa.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		8E48A5DC0B48472EA73C989D /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		A2D6408C25AC4DA0AB8CA1AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1391A9349B6E41C1B7048991 /* rsa */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C904F7E5A6924A758C474A86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB9D9253282A4BD59F7F7B05 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				8E48A5DC0B48472EA73C989D /* CMake Rules */,
+				86D516A51C1544709C9199E7 /* /Users/brock/dev/projects/CryptoMidterm/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		F774E8CF143F44E7B163F998 = {
+			isa = PBXGroup;
+			children = (
+				24AFD0C3C9F1482BADFF4510 /* rsa */,
+				EB9D9253282A4BD59F7F7B05 /* ALL_BUILD */,
+				A2D6408C25AC4DA0AB8CA1AB /* Products */,
+				C904F7E5A6924A758C474A86 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE055AFF31844C7292CD173D /* rsa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C20A04A62C4442999AD97DB3 /* Build configuration list for PBXNativeTarget "rsa" */;
+			buildPhases = (
+				1937CF3F3EB648B7922AC70F /* Sources */,
+				99EAFB2F29DE476686580D73 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A60E2B2B3A849B0AFABB1AB /* PBXTargetDependency */,
+			);
+			name = rsa;
+			productName = rsa;
+			productReference = 1391A9349B6E41C1B7048991 /* rsa */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A954A301B8B34120A3DEE6A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1300;
+			};
+			buildConfigurationList = AA15B0F4AC7E42A18D3AF58F /* Build configuration list for PBXProject "crypto-midterm" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				53010AD3E3FF4584B858F273 /* Debug */,
+				BC0270B80D7B418BB150DE82 /* Release */,
+				D3139F217BCA42B8A5D0BACC /* MinSizeRel */,
+				6EB0BEC190EB4CE38D474B6C /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = F774E8CF143F44E7B163F998;
+			projectDirPath = ../;
+			projectRoot = "";
+			targets = (
+				6B4D2D3D20814E899852B91D /* ALL_BUILD */,
+				F277D8A359324A0D94B81B52 /* ZERO_CHECK */,
+				EE055AFF31844C7292CD173D /* rsa */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E520923E5AB03797EE23991 /* Generate CMakeFiles/ALL_BUILD */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ALL_BUILD";
+			outputPaths = (
+/Users/brock/dev/projects/CryptoMidterm/build/CMakeFiles/ALL_BUILD			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  echo Build\\ all\\ projects
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  echo Build\\ all\\ projects
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		34E243C59E88A9FFF48BCED1 /* Generate CMakeFiles/ZERO_CHECK */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate CMakeFiles/ZERO_CHECK";
+			outputPaths = (
+/Users/brock/dev/projects/CryptoMidterm/build/CMakeFiles/ZERO_CHECK			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e
+if test \"$CONFIGURATION\" = \"Debug\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  make -f /Users/brock/dev/projects/CryptoMidterm/build/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"Release\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  make -f /Users/brock/dev/projects/CryptoMidterm/build/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"MinSizeRel\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  make -f /Users/brock/dev/projects/CryptoMidterm/build/CMakeScripts/ReRunCMake.make
+fi
+if test \"$CONFIGURATION\" = \"RelWithDebInfo\"; then :
+  cd /Users/brock/dev/projects/CryptoMidterm/build
+  make -f /Users/brock/dev/projects/CryptoMidterm/build/CMakeScripts/ReRunCMake.make
+fi
+";
+			showEnvVarsInLog = 0;
+		};
+		3C0110FC8322DE7E50886E21 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		9B50530E35CC49C82C2FACCF = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1937CF3F3EB648B7922AC70F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDD8A658E468402B9F7F08FD /* /Users/brock/dev/projects/CryptoMidterm/rsa.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A60E2B2B3A849B0AFABB1AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F277D8A359324A0D94B81B52 /* ZERO_CHECK */;
+			targetProxy = 655A941B44724784880F69B3 /* PBXContainerItemProxy */;
+		};
+		63BA38EC04254EC8A345EB13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE055AFF31844C7292CD173D /* rsa */;
+			targetProxy = 66E701D331BA4210B4E62D52 /* PBXContainerItemProxy */;
+		};
+		9F5DE14A99BC457A9626717D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F277D8A359324A0D94B81B52 /* ZERO_CHECK */;
+			targetProxy = C7D05742CF4F45BFB54307E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		09F02DE965AE4090A777079F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CPLUSPLUSFLAGS = "   '-std=gnu++14' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = rsa;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		4A4B42FD6076463E947C0EF9 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		5E11E55081C3454DA659AFDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = rsa;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		5EE973309BB546BC9930596E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
+			};
+			name = Debug;
+		};
+		64FDA5201BE141B8899362D9 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		69500F8B169D4733A88526FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		7A734C04EC494A45ABFE8EE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		7D1636566FA944EA829C4B49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Release;
+		};
+		8929EDCE6A454F24A3335CDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = Debug;
+		};
+		947217ADD8E64BFA97FCBF68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
+			};
+			name = Release;
+		};
+		953AE3B5BF384EEFAA5A4634 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
+			};
+			name = RelWithDebInfo;
+		};
+		BB20321B67EE497A9ACAD10C /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CPLUSPLUSFLAGS = "       -DNDEBUG '-std=gnu++14' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = rsa;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D076AD2E988440598C4588A0 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk;
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build/build;
+			};
+			name = MinSizeRel;
+		};
+		DD235B1B9A8E40C8A975FD26 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		E3E8C6BE09A94C38ADB7C022 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = ("","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		FB447BBDBDBB4DD19E260D12 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'","$(inherited)");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_CPLUSPLUSFLAGS = "    -DNDEBUG '-std=gnu++14' ";
+				OTHER_LDFLAGS = (" -Wl,-search_paths_first -Wl,-headerpad_max_install_names","$(inherited)");
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = rsa;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/brock/dev/projects/CryptoMidterm/build;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		451F383F68F64308A1A84A17 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69500F8B169D4733A88526FA /* Debug */,
+				7D1636566FA944EA829C4B49 /* Release */,
+				E3E8C6BE09A94C38ADB7C022 /* MinSizeRel */,
+				4A4B42FD6076463E947C0EF9 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4876632E40234BC4A997EBD3 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8929EDCE6A454F24A3335CDF /* Debug */,
+				7A734C04EC494A45ABFE8EE8 /* Release */,
+				64FDA5201BE141B8899362D9 /* MinSizeRel */,
+				DD235B1B9A8E40C8A975FD26 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AA15B0F4AC7E42A18D3AF58F /* Build configuration list for PBXProject "crypto-midterm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EE973309BB546BC9930596E /* Debug */,
+				947217ADD8E64BFA97FCBF68 /* Release */,
+				D076AD2E988440598C4588A0 /* MinSizeRel */,
+				953AE3B5BF384EEFAA5A4634 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C20A04A62C4442999AD97DB3 /* Build configuration list for PBXNativeTarget "rsa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09F02DE965AE4090A777079F /* Debug */,
+				5E11E55081C3454DA659AFDA /* Release */,
+				FB447BBDBDBB4DD19E260D12 /* MinSizeRel */,
+				BB20321B67EE497A9ACAD10C /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A954A301B8B34120A3DEE6A4 /* Project object */;
+}
