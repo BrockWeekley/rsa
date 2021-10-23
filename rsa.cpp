@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-#include </usr/local/include/gmp.h>
-#include </usr/local/include/gmpxx.h>
+#include <gmp.h>
+#include <gmpxx.h>
 using namespace std;
 
 #define K 10
@@ -63,6 +63,17 @@ void RSAkeygen() {
         mpz_random(intE, mp_size_t(phiN - 1));
         mpz_gcd(gcdNE,intE, phiN);
     }
+    // Write values to files
+    FILE *pfile, *qfile, *efile;
+    pfile = fopen("program_files/p.txt", "w");
+    qfile = fopen("program_files/q.txt", "w");
+    efile = fopen("program_files/e.txt", "w");
+    mpz_out_str(pfile, 10, intP);
+    mpz_out_str(qfile, 10, intQ);
+    mpz_out_str(efile, 10, intE);
+    fclose(pfile);
+    fclose(qfile);
+    fclose(efile);
 }
 
 int main(int argc, char** argv ) {
@@ -89,7 +100,10 @@ int main(int argc, char** argv ) {
     FILE *efile;
     efile = fopen(file_location, "r");
     mpz_inp_str(e, efile, 10);
-
+    
+    fclose(pfile);
+    fclose(qfile);
+    fclose(efile);
 
     cout << "Enter the output file name to store d and N: \n";
     string dNout;
