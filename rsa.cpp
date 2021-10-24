@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include <cmath>
 #include <gmpxx.h>
 using namespace std;
 
-#define K 10
-#define PADDING false
+#define K 100
+#define PADDING true
+#define AUTO true
 
 void generatePrime(mpz_t &randomPrime, gmp_randstate_t state) {
     cout << "\n Generating new Prime";
@@ -133,15 +135,55 @@ void RSAdecrypt(mpz_t &message, mpz_t &d, mpz_t &n, char* location) {
     fclose(found);
 }
 
-void RSAPaddingEncrypt() {
+void RSAPaddingEncrypt(mpz_t &message, size_t &messageBytes, mpz_t &e, mpz_t &n, char* location) {
+    mpz_t paddedMessage;
+    mpz_init(paddedMessage);
     
+    gmp_randstate_t state;
+    gmp_randinit_default(state);
+    gmp_randseed_ui(state, time(NULL));
+    size_t maxBytes = K / 8;
+    size_t randomBytes = maxBytes - messageBytes - 3;
+    mpz_t random;
+    mpz_init(random);
+    cout << "Generating random number of byte size: " << randomBytes << "\n";
+    mpz_urandomb(random, state, randomBytes * 8);
+    // TODO: Step through each of these and find where things go wrong
+//    FILE* testing;
+//    testing = fopen("program_files/testing.txt", "w");
+//    mpz_out_str(testing, paddedMessage);
+    
+    // Left shift 8 bits for zero
+    mpz_mul_2exp(paddedMessage, paddedMessage, 8);
+    // Left shift 8 bits for two (bt)
+    mpz_mul_2exp(paddedMessage, paddedMessage, 8);
+    mpz_setbit(paddedMessage, 1);
+    // Left shift size of random message in bits
+    mpz_mul_2exp(paddedMessage, paddedMessage, (randomBytes * 8));
+    mpz_ior(paddedMessage, paddedMessage, random);
+    // Left shift 8 bits for zero
+    mpz_mul_2exp(paddedMessage, paddedMessage, 8);
+    // Left shift size of input message in bits
+    mpz_mul_2exp(paddedMessage, paddedMessage, (messageBytes * 8));
+    mpz_ior(paddedMessage, paddedMessage, message);
+    
+    mpz_set(message, paddedMessage);
+    RSAencrypt(message, e, n, location);
 }
 
-void RSAPaddingDecrypt() {
-    
+void RSAPaddingDecrypt(mpz_t &message, size_t &messageBytes, mpz_t &d, mpz_t &n, char* location) {
+    size_t paddedMessageBytes = mpz_sizeinbase(message, 2) / 8;
+    mpz_t retreiveMessage;
+    mpz_init2(retreiveMessage, paddedMessageBytes * 8);
+    for (int i = 0; i < (messageBytes * 8); i++) {
+        mpz_setbit(retreiveMessage, i);
+    }
+    mpz_and(message, message, retreiveMessage);
+    RSAdecrypt(message, d, n, location);
 }
 
 int main(int argc, char** argv ) {
+    srand(time(NULL));
     cout << "Generating new keys";
     RSAkeygen();
     
@@ -155,44 +197,79 @@ int main(int argc, char** argv ) {
     mpz_init(endmessage);
     
     char *file_location = new char[100];
-    cout << "\n Enter the name of the file that contains p: \n";
-    cin >> file_location;
+    if (!AUTO) {
+        cout << "\n Enter the name of the file that contains p: \n";
+        cin >> file_location;
+    }
     FILE *pfile;
-    pfile = fopen(file_location, "r");
+    if (!AUTO) {
+        pfile = fopen(file_location, "r");
+    } else {
+        pfile = fopen("program_files/p.txt", "r");
+    }
     mpz_inp_str(p, pfile, 10);
     
-    cout << "Enter the name of the file that contains q: \n";
-    cin >> file_location;
+    if (!AUTO) {
+        cout << "Enter the name of the file that contains q: \n";
+        cin >> file_location;
+    }
     FILE *qfile;
-    qfile = fopen(file_location, "r");
+    if (!AUTO) {
+        qfile = fopen(file_location, "r");
+    } else {
+        qfile = fopen("program_files/q.txt", "r");
+    }
     mpz_inp_str(q, qfile, 10);
 
-    
-    cout << "Enter the name of the file that contains e: \n";
-    cin >> file_location;
+    if (!AUTO) {
+        cout << "Enter the name of the file that contains e: \n";
+        cin >> file_location;
+    }
     FILE *efile;
-    efile = fopen(file_location, "r");
+    if (!AUTO) {
+        efile = fopen(file_location, "r");
+    } else {
+        efile = fopen("program_files/e.txt", "r");
+    }
     mpz_inp_str(e, efile, 10);
 
-    cout << "Enter the output file name to store d: \n";
-    cin >> file_location;
+    if (!AUTO) {
+        cout << "Enter the output file name to store d: \n";
+        cin >> file_location;
+    }
     FILE *dfileout, *dfile;
     dfile = fopen("program_files/d.txt", "r");
     mpz_inp_str(d, dfile, 10);
-    dfileout = fopen(file_location, "w");
+    if (!AUTO) {
+        dfileout = fopen(file_location, "w");
+    } else {
+        dfileout = fopen("program_files/d.txt", "w");
+    }
     mpz_out_str(dfileout, 10, d);
     
-    cout << "Enter the output file name to store N: \n";
-    cin >> file_location;
+    if (!AUTO) {
+        cout << "Enter the output file name to store N: \n";
+        cin >> file_location;
+    }
     FILE *nfile;
-    nfile = fopen(file_location, "w");
+    if (!AUTO) {
+        nfile = fopen(file_location, "w");
+    } else {
+        nfile = fopen("program_files/N.txt", "w");
+    }
     mpz_mul(n, p, q);
     mpz_out_str(nfile, 10, n);
     
-    cout << "Enter the name of the file that contains x to be encrypted using (N, e): \n";
-    cin >> file_location;
+    if (!AUTO) {
+        cout << "Enter the name of the file that contains x to be encrypted using (N, e): \n";
+        cin >> file_location;
+    }
     FILE *xfile;
-    xfile = fopen(file_location, "r");
+    if (!AUTO) {
+        xfile = fopen(file_location, "r");
+    } else {
+        xfile = fopen("program_files/x.txt", "r");
+    }
     mpz_inp_str(message, xfile, 10);
     
     cout << "Enter the output file name to store E(x): \n";
@@ -200,16 +277,25 @@ int main(int argc, char** argv ) {
     char* encryption = new char[100];
     encryption = file_location;
     
+    
+    size_t messageBytes = mpz_sizeinbase(message, 2) / 8;
+    
     if (PADDING) {
-        
+        RSAPaddingEncrypt(message, messageBytes, e, n, encryption);
     } else {
         RSAencrypt(message, e, n, encryption);
     }
 
-    cout << "Enter the name of the file that contains c to be decrypted using d: \n";
-    cin >> file_location;
+    if (!AUTO) {
+        cout << "Enter the name of the file that contains c to be decrypted using d: \n";
+        cin >> file_location;
+    }
     FILE *cfile;
-    cfile = fopen(file_location, "r");
+    if (!AUTO) {
+        cfile = fopen(file_location, "r");
+    } else {
+        cfile = fopen("program_files/encryption.txt", "r");
+    }
     mpz_inp_str(endmessage, cfile, 10);
     
     cout << "Enter the output file name to store D(c): \n";
@@ -218,7 +304,7 @@ int main(int argc, char** argv ) {
     decryption = file_location;
     
     if (PADDING) {
-        
+        RSAPaddingDecrypt(endmessage, messageBytes, d, n, decryption);
     } else {
         RSAdecrypt(endmessage, d, n, decryption);
     }
