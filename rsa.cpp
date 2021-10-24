@@ -5,12 +5,11 @@
 #include <gmpxx.h>
 using namespace std;
 
-#define K 100
+#define K 2048
 #define PADDING true
-#define AUTO true
+#define AUTO false
 
 void generatePrime(mpz_t &randomPrime, gmp_randstate_t state) {
-    cout << "\n Generating new Prime";
     // Seed and Generate a random number of size bits / 2
     mpz_urandomb(randomPrime, state, K/2);
     // Set the lowest bit of the generated number
@@ -23,10 +22,8 @@ void generatePrime(mpz_t &randomPrime, gmp_randstate_t state) {
     mp_bitcnt_t secondHighestBit = mp_bitcnt_t(K/2 - 1);
     mpz_setbit(randomPrime, highestBit);
     mpz_setbit(randomPrime, secondHighestBit);
-    cout << "\n Checking if generated number is prime";
     // Check if the resulting number is prime
     int result = mpz_probab_prime_p(randomPrime, 15);
-    printf("\n Result: %d", result);
     if (result == 2 || result == 1) {
         return;
     } else {
@@ -42,7 +39,6 @@ void RSAkeygen() {
     mpz_init(intN);
     mpz_init(intE);
     mpz_init(intD);
-    cout << "Generating p and q";
     int result = 0;
     // Generate p, q and n
     gmp_randstate_t state;
@@ -52,17 +48,8 @@ void RSAkeygen() {
         generatePrime(intP, state);
         generatePrime(intQ, state);
         result = mpz_cmp(intP, intQ);
-        char* pVal = new char[50000];
-        char* qVal = new char[50000];
-        printf("\n P Val: ");
-        mpz_get_str(pVal, 10, intP);
-        cout << pVal;
-        printf("\n Q Val: ");
-        mpz_get_str(qVal, 10, intQ);
-        cout << qVal;
     }
     mpz_mul(intN, intP, intQ);
-    cout << "\n Determining Phi";
     // Initialize phi values
     mpz_t phiN, phiP, phiQ, gcdNE;
     mpz_init(phiN);
@@ -73,7 +60,6 @@ void RSAkeygen() {
     mpz_sub_ui(phiP, intP, 1);
     mpz_sub_ui(phiQ, intQ, 1);
     mpz_mul(phiN, phiP, phiQ);
-    cout << "\n Generating e";
     // Generate e
     mpz_urandomm(intE, state, phiN);
     mpz_gcd(gcdNE,intE, phiN);
@@ -103,55 +89,39 @@ void RSAencrypt(mpz_t &message, mpz_t &e, mpz_t &n, char* location) {
     mpz_t result;
     mpz_init(result);
     mpz_powm(result, message, e, n);
-//    char* resultString = new char[50000];
-//    char* messageString = new char[50000];
-//    printf("\n Encryption Result Val: ");
-//    mpz_get_str(resultString, 10, result);
-//    cout << resultString;
-//    printf("\n Message Val: ");
-//    mpz_get_str(messageString, 10, message);
-//    cout << messageString;
+
     FILE* found = fopen(location, "w");
     mpz_out_str(found, 10, result);
     fclose(found);
 }
 
-void RSAdecrypt(mpz_t &message, mpz_t &d, mpz_t &n, char* location) {
+void RSAdecrypt(mpz_t &message, mpz_t &d, mpz_t &n, char* location, bool output) {
     mpz_t result;
     mpz_init(result);
     mpz_powm(result, message, d, n);
     
-//    char* resultString = new char[50000];
-//    char* messageString = new char[50000];
-//    printf("\n Decryption Result Val: ");
-//    mpz_get_str(resultString, 10, result);
-//    cout << resultString << "\n";
-//    printf("\n Message Val: ");
-//    mpz_get_str(messageString, 10, message);
-//    cout << messageString << "\n";
-
-    FILE* found = fopen(location, "w");
-    mpz_out_str(found, 10, result);
-    fclose(found);
+    if (output) {
+        FILE* found = fopen(location, "w");
+        mpz_out_str(found, 10, result);
+        fclose(found);
+    } else {
+        mpz_set(message, result);
+    }
 }
 
-void RSAPaddingEncrypt(mpz_t &message, size_t &messageBytes, mpz_t &e, mpz_t &n, char* location) {
+void RSAPaddingEncrypt(mpz_t &message, size_t &messageBits, mpz_t &e, mpz_t &n, char* location) {
     mpz_t paddedMessage;
     mpz_init(paddedMessage);
     
     gmp_randstate_t state;
     gmp_randinit_default(state);
     gmp_randseed_ui(state, time(NULL));
-    size_t maxBytes = K / 8;
+    size_t messageBytes = (messageBits + (8 - 1)) / 8;
+    size_t maxBytes = (K + (8 - 1)) / 8;
     size_t randomBytes = maxBytes - messageBytes - 3;
     mpz_t random;
     mpz_init(random);
-    cout << "Generating random number of byte size: " << randomBytes << "\n";
     mpz_urandomb(random, state, randomBytes * 8);
-    // TODO: Step through each of these and find where things go wrong
-//    FILE* testing;
-//    testing = fopen("program_files/testing.txt", "w");
-//    mpz_out_str(testing, paddedMessage);
     
     // Left shift 8 bits for zero
     mpz_mul_2exp(paddedMessage, paddedMessage, 8);
@@ -164,22 +134,28 @@ void RSAPaddingEncrypt(mpz_t &message, size_t &messageBytes, mpz_t &e, mpz_t &n,
     // Left shift 8 bits for zero
     mpz_mul_2exp(paddedMessage, paddedMessage, 8);
     // Left shift size of input message in bits
-    mpz_mul_2exp(paddedMessage, paddedMessage, (messageBytes * 8));
+    mpz_mul_2exp(paddedMessage, paddedMessage, messageBits);
     mpz_ior(paddedMessage, paddedMessage, message);
-    
     mpz_set(message, paddedMessage);
     RSAencrypt(message, e, n, location);
 }
 
-void RSAPaddingDecrypt(mpz_t &message, size_t &messageBytes, mpz_t &d, mpz_t &n, char* location) {
+void RSAPaddingDecrypt(mpz_t &message, size_t &messageBits, mpz_t &d, mpz_t &n, char* location) {
+    
+    RSAdecrypt(message, d, n, location, false);
+    
     size_t paddedMessageBytes = mpz_sizeinbase(message, 2) / 8;
     mpz_t retreiveMessage;
     mpz_init2(retreiveMessage, paddedMessageBytes * 8);
-    for (int i = 0; i < (messageBytes * 8); i++) {
+    for (int i = 0; i < messageBits; i++) {
         mpz_setbit(retreiveMessage, i);
     }
+    
     mpz_and(message, message, retreiveMessage);
-    RSAdecrypt(message, d, n, location);
+    
+    FILE* found = fopen(location, "w");
+    mpz_out_str(found, 10, message);
+    fclose(found);
 }
 
 int main(int argc, char** argv ) {
@@ -278,10 +254,10 @@ int main(int argc, char** argv ) {
     encryption = file_location;
     
     
-    size_t messageBytes = mpz_sizeinbase(message, 2) / 8;
+    size_t messageBits = mpz_sizeinbase(message, 2);
     
     if (PADDING) {
-        RSAPaddingEncrypt(message, messageBytes, e, n, encryption);
+        RSAPaddingEncrypt(message, messageBits, e, n, encryption);
     } else {
         RSAencrypt(message, e, n, encryption);
     }
@@ -304,9 +280,9 @@ int main(int argc, char** argv ) {
     decryption = file_location;
     
     if (PADDING) {
-        RSAPaddingDecrypt(endmessage, messageBytes, d, n, decryption);
+        RSAPaddingDecrypt(endmessage, messageBits, d, n, decryption);
     } else {
-        RSAdecrypt(endmessage, d, n, decryption);
+        RSAdecrypt(endmessage, d, n, decryption, true);
     }
     
     fclose(pfile);
