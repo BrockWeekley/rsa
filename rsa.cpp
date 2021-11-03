@@ -5,10 +5,16 @@
 #include <gmpxx.h>
 using namespace std;
 
+// Define the size of N in bits
 #define K 2048
+
+// Set the program to use Message Padding 1.5
 #define PADDING true
+
+// Automatically enter the locations of program generated files
 #define AUTO false
 
+// Generate a random prime value of K/2 size and check that it is prime before returning
 void generatePrime(mpz_t &randomPrime, gmp_randstate_t state) {
     // Seed and Generate a random number of size bits / 2
     mpz_urandomb(randomPrime, state, K/2);
@@ -31,6 +37,7 @@ void generatePrime(mpz_t &randomPrime, gmp_randstate_t state) {
     }
 }
 
+// Generate the RSA keys
 void RSAkeygen() {
     // Initialize p, q, n, e, and d
     mpz_t intP, intQ, intN, intE, intD;
@@ -85,6 +92,7 @@ void RSAkeygen() {
     fclose(dfile);
 }
 
+// Apply the RSA encryption algorithm with the provided values
 void RSAencrypt(mpz_t &message, mpz_t &e, mpz_t &n, char* location) {
     mpz_t result;
     mpz_init(result);
@@ -95,6 +103,7 @@ void RSAencrypt(mpz_t &message, mpz_t &e, mpz_t &n, char* location) {
     fclose(found);
 }
 
+// Apply the RSA decryption algorithm with the provided values
 void RSAdecrypt(mpz_t &message, mpz_t &d, mpz_t &n, char* location, bool output) {
     mpz_t result;
     mpz_init(result);
@@ -109,6 +118,7 @@ void RSAdecrypt(mpz_t &message, mpz_t &d, mpz_t &n, char* location, bool output)
     }
 }
 
+// Apply the RSA message padding 1.5 encryption algorithm with the provided values
 void RSAPaddingEncrypt(mpz_t &message, size_t &messageBits, mpz_t &e, mpz_t &n, char* location) {
     mpz_t paddedMessage;
     mpz_init(paddedMessage);
@@ -140,6 +150,7 @@ void RSAPaddingEncrypt(mpz_t &message, size_t &messageBits, mpz_t &e, mpz_t &n, 
     RSAencrypt(message, e, n, location);
 }
 
+// Apply the RSA message padding 1.5 encryption algorithm with the provided values
 void RSAPaddingDecrypt(mpz_t &message, size_t &messageBits, mpz_t &d, mpz_t &n, char* location) {
     
     RSAdecrypt(message, d, n, location, false);
