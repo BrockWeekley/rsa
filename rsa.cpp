@@ -171,15 +171,21 @@ void RSAPaddingDecrypt(mpz_t &message, size_t &messageBits, mpz_t &d, mpz_t &n, 
 
 int main(int argc, char** argv ) {
     srand(time(NULL));
-    cout << "Generating new keys";
-    RSAkeygen();
     
-    mpz_t p, q, n, e, d, message, endmessage;
+    if (AUTO) {
+        cout << "Generating new keys \n";
+        RSAkeygen();
+    }
+
+    mpz_t p, q, n, e, d, phiP, phiQ, phiN, message, endmessage;
     mpz_init(p);
     mpz_init(q);
     mpz_init(n);
     mpz_init(e);
     mpz_init(d);
+    mpz_init(phiP);
+    mpz_init(phiQ);
+    mpz_init(phiN);
     mpz_init(message);
     mpz_init(endmessage);
     
@@ -224,15 +230,15 @@ int main(int argc, char** argv ) {
         cout << "Enter the output file name to store d: \n";
         cin >> file_location;
     }
-    FILE *dfileout, *dfile;
-    dfile = fopen("program_files/d.txt", "r");
-    mpz_inp_str(d, dfile, 10);
+    
+    FILE *dfile;
+    
     if (!AUTO) {
-        dfileout = fopen(file_location, "w");
+        dfile = fopen(file_location, "w");
     } else {
-        dfileout = fopen("program_files/d.txt", "w");
+        dfile = fopen("program_files/d.txt", "r");
+        mpz_inp_str(d, dfile, 10);
     }
-    mpz_out_str(dfileout, 10, d);
     
     if (!AUTO) {
         cout << "Enter the output file name to store N: \n";
@@ -244,7 +250,20 @@ int main(int argc, char** argv ) {
     } else {
         nfile = fopen("program_files/N.txt", "w");
     }
+    
+    // Compute n
     mpz_mul(n, p, q);
+    
+    if (!AUTO) {
+        // Compute d
+        mpz_sub_ui(phiP, p, 1);
+        mpz_sub_ui(phiQ, q, 1);
+        mpz_mul(phiN, phiP, phiQ);
+        mpz_invert(d, e, phiN);
+    }
+    
+    mpz_out_str(dfile, 10, d);
+    
     mpz_out_str(nfile, 10, n);
     
     if (!AUTO) {
@@ -300,7 +319,6 @@ int main(int argc, char** argv ) {
     fclose(qfile);
     fclose(efile);
     fclose(dfile);
-    fclose(dfileout);
     fclose(nfile);
     fclose(cfile);
     fclose(xfile);
