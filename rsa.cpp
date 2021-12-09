@@ -251,11 +251,12 @@ int main(int argc, char** argv ) {
         nfile = fopen("program_files/N.txt", "w");
     }
     
-    // Compute n
+    // Compute n again
     mpz_mul(n, p, q);
     
     if (!AUTO) {
-        // Compute d
+        // Compute d again
+        // TODO: put this in a function - too much work right now
         mpz_sub_ui(phiP, p, 1);
         mpz_sub_ui(phiQ, q, 1);
         mpz_mul(phiN, phiP, phiQ);
